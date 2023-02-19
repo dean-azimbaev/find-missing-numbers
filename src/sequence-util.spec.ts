@@ -7,15 +7,18 @@ describe("Generate sequence", () => {
   });
 
   it("should generate sequence without two numbers", () => {
-    const until = 10;
-    const removeFrom = 5;
-    const result = generateSequence(until, removeFrom);
+    const size = 10;
+    const skipFrom = 5;
+    const result = generateSequence(size, skipFrom);
     const expectedResult = [1, 2, 3, 4, 7, 8, 9, 10];
-
     expect(result).toEqual(expectedResult);
   });
 
-  it("should thrown error for zero or negative number for removeFrom", () => {
+  it("should thrown error for zero or negative number for skipFrom", () => {
     expect(() => generateSequence(10, -1)).toThrowError(WrongNumberException);
+    expect(() => generateSequence(10, 0)).toThrowError(WrongNumberException);
+    expect(() => generateSequence(10, -9999)).toThrowError(
+      WrongNumberException
+    );
   });
 });
